@@ -10,12 +10,8 @@
         "start": "node index.js"
     },
     "dependencies": {
-<<<<<<< HEAD
         "express": "4.15.2",
         "body-parser": "latest"
-=======
-        "express": "4.15.2"
->>>>>>> b6470b62339cd2e83b2ac15eb0ba930b05f97577
     },
     "repository": {
         "type": "git",
