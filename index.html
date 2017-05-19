@@ -3,6 +3,11 @@
 <head>
     <title>2017DBFinal</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        div {
+            margin: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -22,7 +27,7 @@
     <script>
         function postText() {
             $.post('/text', {
-                text: document.getElementById("textInput").getAttribute("value")
+                text: $("#textInput").val()
             }, function(response) {
                 console.log(response);
             });
