@@ -14,9 +14,6 @@ app.use(bodyParser.json());
 
 //指定root頁面檔案
 app.get('/', function(request, response) {
-    response.sendFile(__dirname + '/index.html');
-});
-app.get('/sql', function(request, response) {
     response.sendFile(__dirname + '/sql.html');
 });
 
@@ -61,17 +58,8 @@ app.get('/peoples', function(request, response) {
     response.send(peoples);
 });
 
+
 //當有人用Rest API post <網址>/text觸發函式
-app.post('/text', function(request, response) {
-
-    //擷取post封包內容
-    var data = request.body;
-    var text = data.text;
-
-    //將json資料回傳
-    response.send("You send text " + text);
-});
-
 app.post('/sql', function(request, response) {
 	
     //擷取post封包內容
@@ -82,7 +70,7 @@ app.post('/sql', function(request, response) {
 
 	const pool = require('./lib/db'); 
 	//for one or more queries
-	var queries = text.split(';');
+	var queries = [text];
 	pool.query_more(queries, function(err, results){
 		if(err)
 			return console.error('error running query', err);

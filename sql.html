@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>SQL_test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        div {
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        輸入SQL指令（結尾必須要用';'結尾）
+		<br>
+		可支援多SQL輸入（每句都要以';'作結尾）
+    </div>
+    <div>
+        <textarea value="SELECT * FROM sensor" id="sqlInput" rows="5"
+			cols="50">SELECT * FROM sensor</textarea>
+        <input type="button" value="Send SQL query" onclick="postSQL()"></input>
+    </div>
+
+    <div>
+        開F12打開Console
+    </div>
+    <div>
+        看裡面的結果
+    </div>
+    <script>
+
+        function postSQL() {
+            $.post('/sql', {
+                text: $("#sqlInput").val()
+            }, function(response) {
+                console.log(response);
+            });
+        }
+    </script>
+</body>
+
+</html>
