@@ -64,12 +64,14 @@
 			$('#warn').append(tr);
 		}
 		function clear_warn_row(){ 
-　　		objTable= document.getElementById("warn"); 
-　　		var length= objTable.rows.length ; 
-　　		for( i=1; i<length; i++ ) 
-　　		{ 
-　　		objTable.deleteRow(i); 
-　　		} 
+			var num = document.getElementById("warn").rows.length;
+　　		while(num >1)
+			{
+			//刪除最後一個
+				document.getElementById("warn").deleteRow(-1);
+				num = num-1;
+			}
+ 
 　　	}
 		function add_broadcast_row(i) {
 			var td1 = $('<td>').text(d.rows[i].broadcast_id);
@@ -81,12 +83,13 @@
 			$('#broadcast').append(tr);
 		}
 		function clear_broadcast_row(){ 
-　　		objTable= document.getElementById("broadcast"); 
-　　		var length= objTable.rows.length ; 
-　　		for( i=1; i<length; i++ ) 
-　　		{ 
-　　		objTable.deleteRow(i); 
-　　		} 
+　　		var num = document.getElementById("broadcast").rows.length;
+　　		while(num >1)
+			{
+			//刪除最後一個
+				document.getElementById("broadcast").deleteRow(-1);
+				num = num-1;
+			}
 　　	} 
 		function putText(){
 			var a = $("#item").val();
@@ -102,8 +105,8 @@
 		var c;
 		var d;
 		function printData(){
-			<!--clear_warn_row();-->
-			<!--clear_broadcast_row(); -->
+			clear_warn_row(); 
+			clear_broadcast_row();
 			$.get('/getWarn',
 			function(res){
 				c = res;
@@ -124,9 +127,7 @@
 				add_broadcast_row(i);
 			}
 		}
-		setInterval(clear_warn_row,2000)
-		setInterval(clear_broadcast_row,2000)
-		setInterval(printData,2000);
+		setInterval(printData,1000);
 		
     </script>
 
