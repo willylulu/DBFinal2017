@@ -10,7 +10,6 @@
         }
     </style>
 	<!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
-	<script type="text/javascript" src="print.js"></script>
 </head>
 
 <body>
@@ -61,7 +60,7 @@
 		}
 		function putText(){
 			var a = $("#item").val();
-			var b = $("#speed")val();
+			var b = $("#speed").val();
             $.post('/insertSenserSpped', {
                 item:a,
 				speed:b
