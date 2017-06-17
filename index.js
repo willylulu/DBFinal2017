@@ -36,7 +36,13 @@ app.post('/sql',(request,response)=>{
 });
 
 app.get('/getDb3View',(request,response)=>{
-	postgresFriend.query(sqlBook.getDb3View,(result)=>{
+	postgres.query(sqlBook.getDb3View,(result)=>{
+		response.send(result);
+	});
+});
+
+app.get('/getSensor',(request,response)=>{
+	postgres.query(sqlBook.getSensor,(result)=>{
 		response.send(result);
 	});
 });
