@@ -31,9 +31,7 @@
     <script>
 
         function postSQL() {
-            $.post('/sql', {
-                text: $("#sqlInput").val()
-            }, function(response) {
+            $.get('/getSensor', function(response) {
                 console.log(response);
             });
         }
