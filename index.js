@@ -49,7 +49,7 @@ app.get('/getSensorSpeed',(request,response)=>{
 
 app.post('/insertSensorSpeed',(request,response)=>{
 	var data = request.body;
-	postgres.query(sqlBook.insertSenserSpped(data.item,data.speed),(result)=>{
+	postgres.query(sqlBook.insertSensorSpeed(data.item,data.speed),(result)=>{
 		response.send(result);
 	});
 });
