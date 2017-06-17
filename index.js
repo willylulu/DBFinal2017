@@ -31,27 +31,3 @@ app.post('/sql',(request,response)=>{
 		response.send(result);
 	});
 });
-
-// app.post('/sql', function(request, response) {
-	
-//     //擷取post封包內容
-//     var data = request.body;
-//     var text = data.text;
-
-//     //將json資料回傳
-
-// 	const pool = require('./lib/db'); 
-// 	//for one or more queries
-// 	var queries = text.split(';');
-// 	pool.query_more(queries, function(err, results){
-// 		if(err)
-// 			return console.error('error running query', err);
-
-// 		//use results to do something
-// 		//console.log('-------results------------');
-// 		//console.log(results);
-// 		//console.log("end of queries");
-//     	//response.send(results);
-//     	response.send(results);
-// 	});
-// });
