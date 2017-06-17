@@ -41,8 +41,15 @@ app.get('/getDb3View',(request,response)=>{
 	});
 });
 
-app.get('/getSensor',(request,response)=>{
-	postgres.query(sqlBook.getSensor(),(result)=>{
+app.get('/getSensorSpeed',(request,response)=>{
+	postgres.query(sqlBook.getSensorSpeed(),(result)=>{
+		response.send(result);
+	});
+});
+
+app.post('/insertSensorSpeed',(request,response)=>{
+	var data = request.body;
+	postgres.query(sqlBook.insertSenserSpped(data.item,data.speed),(result)=>{
 		response.send(result);
 	});
 });
@@ -61,13 +68,6 @@ app.get('/getWarn',(request,response)=>{
 
 app.get('/getBroadcast',(request,response)=>{
 	postgres.query(sqlBook.getBroadcast(),(result)=>{
-		response.send(result);
-	});
-});
-
-app.post('/insertSenserSpped',(request,response)=>{
-	var data = request.body;
-	postgres.query(sqlBook.insertSenserSpped(data.item,data.speed),(result)=>{
 		response.send(result);
 	});
 });

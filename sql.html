@@ -25,16 +25,39 @@
     <input type="button" value="查詢" class="btn btn-success" onClick="putText();">
             
 	</div>
+	<div>
+	<table width="500" border="1" id="warn">
+		<caption>warn</caption>
+　		<tr>
+　		<td align="center">accident_id</td>
+　		<td align="center">item_no</td>
+		<td align="center">status</td>
+		<td align="center">road_id</td>
+		<td align="center">direction</td>
+		<td align="center">mileage</td>
+　		</tr>
+	</table>
+	<table width="500" border="1" id="broadcast">
+		<caption>broadcast</caption>
+　		<tr>
+　		<td align="center">broadcast_id</td>
+　		<td align="center">accident_id</td>
+		<td align="center">direction</td>
+		<td align="center">road_section</td>
+		<td align="center">status</td>
+　		</tr>
+	</table>
+	</div>
 	<!-- accident warn  -->
     <script>
 
-        function postSQL() {
-            $.post('/sql', {
-                text: $("#sqlInput").val()
-            }, function(response) {
-                console.log(response);
-            });
-        }
+        function add_row() {
+			var td1 = $('<td>').text('Val-01');
+			var td2 = $('<td>').text('Val-02');
+			var td3 = $('<td>').text('Val-03');
+			var tr = $('<tr>').append(td1,td2,td3);
+			$('table').append(tr);
+		}
 		function putText(){
 			var a = $("#item").val();
 			var b = $("#speed").val();
@@ -47,14 +70,12 @@
 			});
         }
 		
-		$(document).ready(function(){
-			$("#hide").click(function(){
-				$("p").hide();
+		function printData(){
+			$.get('/getWarn',
+			function(res){
+				console.log(res);
 			});
-			$("#show").click(function(){
-				$("p").show();
-			});
-		});
+		}
 		
 		setInterval("$(\"#showTimeHere\").load(\"ajax_time.php\");", 1000);
     </script>
