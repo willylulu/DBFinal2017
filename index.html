@@ -11,33 +11,11 @@
 </head>
 
 <body>
-    <div>
-        開F12打開Console
-    </div>
-    <div>
-        看裡面的結果
-    </div>
-    <div>
-        <input type="button" value="Send Rest API get peoples" onclick="getPeoples()"></input>
-    </div>
-    <div>
-        <input type="text" value="Some Text~~~" id="textInput"></input>
-        <input type="button" value="Send Rest API post text" onclick="postText()"></input>
-    </div>
+    
     <script>
-        function postText() {
-            $.post('/text', {
-                text: $("#textInput").val()
-            }, function(response) {
-                console.log(response);
-            });
-        }
-
-        function getPeoples() {
-            $.get('/peoples', function(response) {
-                console.log(response);
-            });
-        }
+        $.get('/getSensor',function(res){
+            console.log(res);
+        });
     </script>
 </body>
 
