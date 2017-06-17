@@ -3,39 +3,63 @@
 <head>
     <title>SQL_test</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <style>
         div {
             margin: 5px;
         }
     </style>
+	<!--<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+	<script type="text/javascript" src="print.js"></script>
 </head>
 
 <body>
+    
+	<!--<div id="map_canvas" style="width:100%; height:100%"></div>-->
+	
     <div>
-        輸入SQL指令（結尾必須要用';'結尾）
-		<br>
-		可支援多SQL輸入（每句都要以';'作結尾）
-    </div>
-    <div>
-        <textarea value="SELECT * FROM sensor" id="sqlInput" rows="5"
-			cols="50">SELECT * FROM sensor</textarea>
-        <input type="button" value="Send SQL query" onclick="postSQL()"></input>
-    </div>
-
-    <div>
-        開F12打開Console
-    </div>
-    <div>
-        看裡面的結果
-    </div>
+	<div>item:</div>
+    <input type="text" id="item"></input></br>
+	<div>speed:</div>
+	<input type="text" id="speed"></input></br>
+     
+    <input type="button" value="查詢" class="btn btn-success" onClick="putText();">
+            
+	</div>
+	<!-- accident warn  -->
     <script>
 
         function postSQL() {
-            $.get('/getSensor', function(response) {
+            $.post('/sql', {
+                text: $("#sqlInput").val()
+            }, function(response) {
                 console.log(response);
             });
         }
+		function putText(){
+			var a = $("#item").val();
+			var b = $("#speed")val();
+            $.post('/insertSenserSpped', {
+                item:a,
+				speed:b
+            },
+			function(res){
+				console.log(res);
+			});
+        }
+		
+		$(document).ready(function(){
+			$("#hide").click(function(){
+				$("p").hide();
+			});
+			$("#show").click(function(){
+				$("p").show();
+			});
+		});
+		
+		setInterval("$(\"#showTimeHere\").load(\"ajax_time.php\");", 1000);
     </script>
+
 </body>
 
 </html>
