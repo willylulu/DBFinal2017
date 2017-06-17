@@ -52,3 +52,22 @@ app.get('/updateWarn',(request,response)=>{
 		response.send(result);
 	});
 });
+
+app.get('/getWarn',(request,response)=>{
+	postgres.query(sqlBook.getWarn(),(result)=>{
+		response.send(result);
+	});
+});
+
+app.get('/getBroadcast',(request,response)=>{
+	postgres.query(sqlBook.getBroadcast(),(result)=>{
+		response.send(result);
+	});
+});
+
+app.post('/insertSenserSpped',(request,response)=>{
+	var data = request.body;
+	postgres.query(sqlBook.insertSenserSpped(data.item,data.speed),(result)=>{
+		response.send(result);
+	});
+});
