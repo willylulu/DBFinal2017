@@ -25,7 +25,7 @@ var Postgres = require('./lib/db');
 var sqlBook = require('./lib/sqlBook');
 
 var postgres = new Postgres('db4','db4','db004','140.114.77.23','5432','10',30000);
-var postgresFriend = new Postgres('db4','db3','db004','140.114.77.23','5432','10',30000);
+var postgresFriend = new Postgres('db3','db3','db004','140.114.77.23','5432','10',30000);
 
 app.post('/sql',(request,response)=>{
 	var data = request.body;
@@ -36,13 +36,19 @@ app.post('/sql',(request,response)=>{
 });
 
 app.get('/getDb3View',(request,response)=>{
-	postgres.query(sqlBook.getDb3View(),(result)=>{
+	postgresFriend.query(sqlBook.getDb3View(),(result)=>{
 		response.send(result);
 	});
 });
 
 app.get('/getSensor',(request,response)=>{
 	postgres.query(sqlBook.getSensor(),(result)=>{
+		response.send(result);
+	});
+});
+
+app.get('/updateWarn',(request,response)=>{
+	postgres.query(sqlBook.updateWarn(),(result)=>{
 		response.send(result);
 	});
 });
